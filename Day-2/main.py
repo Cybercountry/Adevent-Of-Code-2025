@@ -1,18 +1,21 @@
 """
-To find a Invalid ID, It's necessary to check 3 things:
-    1- It has an even number of digits;
-    2- It's possible split the number in half;
-    3- The first half is equal to the second half;
+To identify an invalid ID, it is necessary to check if:
+    - It has a pattern that repeats at least 2 times or more.
 """
 
 
 def is_invalid_id(n):
     s = str(n)
-    if len(s) % 2 != 0:
-        return False  # Only numbers with an even number of digits can be invalid IDs.
 
-    half = len(s) // 2
-    return s[:half] == s[half:]
+    # For an n-digit number, it's necessary to test all pattern sizes k
+    # where k divides n.
+    # Form: (k % n == 0)
+    for size in range(1, len(s) // 2 + 1):
+        block = s[:size]
+        if len(s) % size == 0 and block * (len(s) // size) == s:
+            return True
+
+    return False
 
 
 def main():
@@ -28,6 +31,7 @@ def main():
 
         start_id, end_id = map(int, r.split("-"))
 
+        # end_id + 1 to ensure it iterates over all numbers in the range
         for n in range(start_id, end_id + 1):
             if is_invalid_id(n):
                 total += n
