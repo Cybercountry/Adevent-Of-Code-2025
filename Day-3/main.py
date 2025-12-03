@@ -1,28 +1,33 @@
+def greedy_stack(n, k):
+    remove = len(n) - k
+    stack = []
+
+    for i in n:
+        while remove > 0 and stack and stack[-1] < i:
+            stack.pop()
+            remove -= 1
+        stack.append(i)
+
+    # In special cases, like decreasing numbers,
+    # we need to ensure we remove enough elements
+    if remove > 0:
+        stack = stack[:-remove]
+
+    return int("".join(stack))
+
+
 # Read input from the txt
 with open("input.txt", "r") as file:
     data = file.read().strip().split("\n")
 
-"""
-exemples = [
-    "987654321111111",  # 98
-    "811111111111119",  # 89
-    "234234234234278",  # 78
-    "818181911112111",  # 92
-    # Sum = 357
-]
-"""
+# exemple = ["987654321111111", "811111111111119", "234234234234278", "818181911112111"]
 
+# Variables
 total = 0
+k = 12
 
+# Main loop
 for num in data:
-    best_combination = -1
-
-    for i in range(len(num)):
-        for j in range(i + 1, len(num)):
-            value = int(num[i] + num[j])
-            if value > best_combination:
-                best_combination = value
-
-    total += best_combination
+    total += greedy_stack(num, k)  # O(n)
 
 print(total)
