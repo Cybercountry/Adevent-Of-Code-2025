@@ -1,0 +1,36 @@
+def read_ranges_ids(filename="input.txt", mode="r"):
+    ranges = []
+    id_availables = []
+    with open(filename, mode) as file:
+        read_range = True
+
+        for row in file:
+            row = row.strip()
+
+            # Check for the empty line
+            # Change the mode of reading
+            if row == "":
+                read_range = False
+                continue
+
+            if read_range:
+                x, y = row.split("-")
+                ranges.append((int(x), int(y)))
+            else:
+                id_availables.append(int(row))
+    return ranges, id_availables
+
+
+# O(n * m)
+def main():
+    ranges, id_availables = read_ranges_ids()
+
+    fresh_available = 0
+    for id in id_availables:
+        if any(start <= id <= end for start, end in ranges):
+            fresh_available += 1
+    print(fresh_available)
+
+
+if __name__ == "__main__":
+    main()

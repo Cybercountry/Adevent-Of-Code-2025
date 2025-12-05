@@ -11,3 +11,4 @@ Each day will have its own folder ('Day-x') which will contain the main content,
 - [Day 2](https://github.com/Cybercountry/Adevent-Of-Code-2025/tree/main/Day-2)
 - [Day 3](https://github.com/Cybercountry/Adevent-Of-Code-2025/tree/main/Day-3)
 - [Day 4](https://github.com/Cybercountry/Adevent-Of-Code-2025/tree/main/Day-4)
+- [Day 5](https://github.com/Cybercountry/Adevent-Of-Code-2025/tree/main/Day-5)
