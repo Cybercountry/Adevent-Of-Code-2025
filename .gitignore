@@ -260,5 +260,5 @@ pyrightconfig.json
 pyvenv.cfg
 pip-selfcheck.json
 
-# End of https://www.toptal.com/developers/gitignore/api/ssh,dotenv,virtualenv,python,c,git
-
+# Inputs
+Day-*/input.txt
